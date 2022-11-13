@@ -2,7 +2,20 @@
 name = "mozhi"
 version = "0.1.0"
 edition = "2021"
-
+authors = ["fasilmveloor <fasilmveloor@gmail.com>"]
+build = "build.rs" 
+description = "Scripting language based on malayalam"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+[dependencies]
+serde = "1.0.147"
+lalrpop-util = "0.19.8"
+clap = "4.0.23"
+rustyline = "10.0.0"
+
+[build-dependencies]
+lalrpop = "0.19"
+
+[profile.release]
+lto = true
