@@ -8,11 +8,11 @@ description = "Scripting language based on malayalam"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-[dependencies]
 serde = "1.0.147"
-lalrpop-util = "0.19.8"
+lalrpop-util = { version = "^0.19", features = ["lexer"] }
 clap = "4.0.23"
 rustyline = "10.0.0"
+regex = "1"
 
 [build-dependencies]
 lalrpop = "0.19"

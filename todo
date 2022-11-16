@@ -1,0 +1,7 @@
+future keywords
+
+["എഴുത്ത്"] => TokenType::String,
+["സംഖ്യ"] => TokenType::Number,
+["സംഖ്യാകൾ"] => TokenType::Numbers,
+["പദങ്ങൾ"] => TokenType::Strings,
+["അല്ലെങ്കിൽ"] => TokenType::Or,
