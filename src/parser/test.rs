@@ -11,7 +11,7 @@ use std::collections::HashMap;
 #[test]
 fn parser_test() {
     let code = "
-    പ്രിന്റ് 'മൊഴിയിലേക്ക് സ്വാഗതം \n';
+    എഴുതുക 'മൊഴിയിലേക്ക് സ്വാഗതം \n';
     ";
     let mut lex = Lexer::new(&code, HashMap::new(), 0);
     let parsed = parse(&code, &mut lex);

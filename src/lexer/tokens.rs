@@ -39,7 +39,7 @@ impl std::fmt::Display for TokenType {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             TokenType::Declaration => write!(f, "ചരം"),
-            TokenType::Write => write!(f, "പ്രിന്റ്"),
+            TokenType::Write => write!(f, "എഴുതുക"),
             TokenType::InputString => write!(f, "ഇന്പുട്"),
             TokenType::InputNumber => write!(f, "ഇന്പുട്_നമ്പർ"),
             TokenType::LeftBrace => write!(f, "{{"),

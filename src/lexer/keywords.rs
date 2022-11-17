@@ -21,7 +21,7 @@ impl Keywords {
             ["ചരം" ] => TokenType::Declaration,
             ["ഇന്പുട്"] => TokenType::InputString,
             ["ഇന്പുട്_നമ്പർ"] => TokenType::InputNumber,
-            ["പ്രിന്റ്"] => TokenType::Write,
+            ["എഴുതുക"] => TokenType::Write,
             ["ശെരിയാണോ"] => TokenType::If,
             ["അല്ലേൽ"] => TokenType::Else,
             ["ആവർത്തിക്കുക"] => TokenType::Loop,
