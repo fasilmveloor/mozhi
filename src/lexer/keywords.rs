@@ -19,7 +19,7 @@ impl Keywords {
     pub fn new() -> Self {
         let list = keywordize!(
             ["ചരം" ] => TokenType::Declaration,
-            ["ഇന്പുട്"] => TokenType::InputString,
+            ["ഇൻപുട്"] => TokenType::InputString,
             ["ഇന്പുട്_നമ്പർ"] => TokenType::InputNumber,
             ["എഴുതുക"] => TokenType::Write,
             ["ശെരിയാണോ"] => TokenType::If,

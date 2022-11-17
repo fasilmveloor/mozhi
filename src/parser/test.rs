@@ -11,7 +11,8 @@ use std::collections::HashMap;
 #[test]
 fn parser_test() {
     let code = "
-    എഴുതുക 'മൊഴിയിലേക്ക് സ്വാഗതം \n';
+    ചരം x;
+    x = ഇൻപുട്_നമ്പർ;
     ";
     let mut lex = Lexer::new(&code, HashMap::new(), 0);
     let parsed = parse(&code, &mut lex);
@@ -19,7 +20,12 @@ fn parser_test() {
     println!("{:?}", parsed);
     let expected = SourceUnit(
         [
-            Statement(Write((5, 93), StringLiteral((30, 53), TokenType::Literal(1))))
+            Statement(Declaration((5, 17), Symbol((15, 15), TokenType::Symbol(1)))),
+            Statement(Assignment(
+                (22, 61),
+                Symbol((22, 22), TokenType::Symbol(1)), 
+                Symbol((26, 37), TokenType::Symbol(2)),
+            )),
         ]
         .to_vec(),
     );

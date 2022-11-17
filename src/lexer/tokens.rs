@@ -40,8 +40,8 @@ impl std::fmt::Display for TokenType {
         match self {
             TokenType::Declaration => write!(f, "ചരം"),
             TokenType::Write => write!(f, "എഴുതുക"),
-            TokenType::InputString => write!(f, "ഇന്പുട്"),
-            TokenType::InputNumber => write!(f, "ഇന്പുട്_നമ്പർ"),
+            TokenType::InputString => write!(f, "ഇൻപുട്"),
+            TokenType::InputNumber => write!(f, "ഇൻപുട്_നമ്പർ"),
             TokenType::LeftBrace => write!(f, "{{"),
             TokenType::RightBrace => write!(f, "}}"),
             TokenType::If => write!(f, "ശെരിയാണോ"),
