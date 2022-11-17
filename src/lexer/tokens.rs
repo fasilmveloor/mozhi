@@ -27,6 +27,7 @@ pub enum TokenType {
     Um,
     Nekal,
     Do,
+    Ennu,
     Comma,
     AngleOpen,
     AngleClose,
@@ -74,6 +75,7 @@ impl std::fmt::Display for TokenType {
             TokenType::AngleOpen => write!(f, "<"),
             TokenType::AngleClose => write!(f, ">"),
             TokenType::Do => write!(f, "ചെയ്യുക"),
+            TokenType::Ennu => write!(f, "എന്നു"),
         }
     }
 }

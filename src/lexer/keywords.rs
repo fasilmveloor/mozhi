@@ -22,7 +22,7 @@ impl Keywords {
             ["ഇൻപുട്"] => TokenType::InputString,
             ["ഇൻപുട്"] => TokenType::Input,
             ["ഇന്പുട്_നമ്പർ"] => TokenType::InputNumber,
-            ["എഴുതുക", "പ്രദർശിപ്പിക്കുക"] => TokenType::Write,
+            ["എഴുതുക", "പ്രദർശിപ്പിക്കുക", "കാണിക്കുക"] => TokenType::Write,
             ["ശെരിയാണോ"] => TokenType::If,
             ["അല്ലേൽ", "അല്ലെങ്കിൽ"] => TokenType::Else,
             ["ആവർത്തിക്കുക"] => TokenType::Loop,
@@ -33,7 +33,8 @@ impl Keywords {
             ["ഉം"] => TokenType::Um,
             ["നെകാൾ"] => TokenType::Nekal,
             ["തിരികെ_അയക്കുക"] => TokenType::Return,
-            ["ചെയ്യുക"] => TokenType::Do
+            ["ചെയ്യുക"] => TokenType::Do,
+            ["എന്നു"] => TokenType::Ennu
             //["പരിഹരിക്കുക"] => TokenType::Break
         );
 
