@@ -26,7 +26,8 @@ Comma<T>:Vec<T> = {
 Statement:Statement = {
     <a:@L> Declaration <id:Expression> ";" <b:@R> => Statement::Declaration((a,b),id),
     <a:@L> <l:Expression> "=" <r:Expression> ";" <b:@R> => Statement::Assignment((a,b),l,r),
-    <a:@L> Write <e:Expression> ";" <b:@R> => Statement::Write((a,b),e),
+    <a:@L> <l:Expression> Input Do ";" <b:@R> => Statement::Input((a,b),l),
+    <a:@L> <e:Expression> Write ";" <b:@R> => Statement::Write((a,b),e),
     <a:@L> <condition:Conditional> "{" <s:SourceUnit> "}" <b:@R> => Statement::Conditional((a,b),condition,s,None),
     <a:@L> <condition:Conditional> "{" <s:SourceUnit> "}" Else "{" <f:SourceUnit> "}" <b:@R> => Statement::Conditional((a,b),condition,s,Some(f)),
     <a:@L> <name:Expression> "(" <params:Expressions> ")" "{" <s:SourceUnit> "}" <b:@R> => Statement::FunctionDeclaration((a,b),name,params,s),
@@ -110,8 +111,10 @@ extern {
         Loop => TokenType::Loop,
         "തുറക്കുക" => TokenType::AngleOpen,
         "അടക്കുക" => TokenType::AngleClose,
+        Input => TokenType::Input,
         InputNumber => TokenType::InputNumber,
         InputString => TokenType::InputString,
         Return => TokenType::Return,
+        Do => TokenType::Do,
     }
 }

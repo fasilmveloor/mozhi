@@ -153,6 +153,28 @@ impl Executor {
                     self.return_storage = self.eval_arithmetic_logic_expression(expr)?;
                     self.subroutine_exit_flag = true;
                 }
+
+                Statement::Input((p, q), l) => {
+                    if let Expression::Symbol((_a, _b), TokenType::Symbol(address)) = l {
+                        if !self
+                            .symbol_table
+                            .contains_key(&(self.scope_level, *address))
+                        {
+                            return Err((
+                                (*p, *q),
+                                RunTimeErrors::UndefinedSymbol(
+                                    self.get_symbol_name(*address).unwrap(),
+                                ),
+                            ));
+                        }
+                        let mut input = String::new();
+                        stdin().read_line(&mut input).unwrap();
+                        let data = DataTypes::String(input);
+                        self.symbol_table.insert((self.scope_level, *address), data);
+                    } else {
+                        return Err(((*p, *q), RunTimeErrors::InvalidAssignment));
+                    }
+                }
             }
         }
         Ok(())

@@ -3,6 +3,7 @@ use std::fmt::Formatter;
 pub enum TokenType {
     Declaration,
     Write,
+    Input,
     InputString,
     InputNumber,
     LeftBrace,
@@ -25,6 +26,7 @@ pub enum TokenType {
     CloseParantheses,
     Um,
     Nekal,
+    Do,
     Comma,
     AngleOpen,
     AngleClose,
@@ -40,6 +42,7 @@ impl std::fmt::Display for TokenType {
         match self {
             TokenType::Declaration => write!(f, "ചരം"),
             TokenType::Write => write!(f, "എഴുതുക"),
+            TokenType::Input => write!(f, "ഇൻപുട്"),
             TokenType::InputString => write!(f, "ഇൻപുട്"),
             TokenType::InputNumber => write!(f, "ഇൻപുട്_നമ്പർ"),
             TokenType::LeftBrace => write!(f, "{{"),
@@ -70,6 +73,7 @@ impl std::fmt::Display for TokenType {
             TokenType::Return => write!(f, "തിരികെ_അയക്കുക"),
             TokenType::AngleOpen => write!(f, "<"),
             TokenType::AngleClose => write!(f, ">"),
+            TokenType::Do => write!(f, "ചെയ്യുക"),
         }
     }
 }

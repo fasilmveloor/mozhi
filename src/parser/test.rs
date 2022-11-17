@@ -12,7 +12,7 @@ use std::collections::HashMap;
 fn parser_test() {
     let code = "
     ചരം x;
-    x = ഇൻപുട്_നമ്പർ;
+    x ഇൻപുട് ചെയ്യുക;
     ";
     let mut lex = Lexer::new(&code, HashMap::new(), 0);
     let parsed = parse(&code, &mut lex);

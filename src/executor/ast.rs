@@ -18,6 +18,7 @@ pub enum Statement {
     EmptyExpression((usize, usize), Expression),
     Return((usize, usize), Expression),
     Write((usize, usize), Expression),
+    Input((usize, usize), Expression),
 }
 
 #[derive(Debug, Clone, PartialEq)]

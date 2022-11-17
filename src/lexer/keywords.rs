@@ -20,6 +20,7 @@ impl Keywords {
         let list = keywordize!(
             ["ചരം" ] => TokenType::Declaration,
             ["ഇൻപുട്"] => TokenType::InputString,
+            ["ഇൻപുട്"] => TokenType::Input,
             ["ഇന്പുട്_നമ്പർ"] => TokenType::InputNumber,
             ["എഴുതുക", "പ്രദർശിപ്പിക്കുക"] => TokenType::Write,
             ["ശെരിയാണോ"] => TokenType::If,
@@ -31,7 +32,9 @@ impl Keywords {
             ["തുല്യമാണെങ്കിൽ"] => TokenType::EqualTo,
             ["ഉം"] => TokenType::Um,
             ["നെകാൾ"] => TokenType::Nekal,
-            ["തിരികെ_അയക്കുക"] => TokenType::Return
+            ["തിരികെ_അയക്കുക"] => TokenType::Return,
+            ["ചെയ്യുക"] => TokenType::Do
+            //["പരിഹരിക്കുക"] => TokenType::Break
         );
 
         Self { list }
