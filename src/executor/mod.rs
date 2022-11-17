@@ -73,7 +73,6 @@ impl Executor {
             let SourceUnitPart::Statement(stmt) = x;
             match stmt {
                 Statement::Declaration((p, q), symbol) => {
-                    println!("Declaration");
                     if let Expression::Symbol((_a, _b), TokenType::Symbol(address)) = symbol {
                         if self
                             .symbol_table
