@@ -9,7 +9,7 @@ pub enum RunTimeErrors {
     DivisionByZero,
     IncompatibleOperation,
     InvalidExpression,
-    InvalidNumberInput,
+    // InvalidNumberInput,
     ErrorReadingStdin,
     InvalidFunctionDeclaration,
     ArgumentCountMismatch,
@@ -31,10 +31,10 @@ impl fmt::Display for RunTimeErrors {
             }
             RunTimeErrors::InvalidExpression => write!(f, "[Error]: Invalid expression"),
             RunTimeErrors::InvalidAssignment => write!(f, "[Error]: Invalid Assignment"),
-            RunTimeErrors::InvalidNumberInput => write!(
-                f,
-                "[Error]: Invalid integer data has been provided as input"
-            ),
+            // RunTimeErrors::InvalidNumberInput => write!(
+            //     f,
+            //     "[Error]: Invalid integer data has been provided as input"
+            // ),
             RunTimeErrors::ErrorReadingStdin => write!(f, "[Error]: Cannot read input"),
             RunTimeErrors::InvalidFunctionDeclaration => {
                 write!(f, "[Error]: Invalid function declaration")

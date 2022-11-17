@@ -60,6 +60,10 @@ impl Executor {
         }
     }
 
+    pub fn is_number(&self, token: &str) -> bool {
+        token.parse::<i64>().is_ok()
+    }
+
     pub fn execute(
         &mut self,
         unit: &SourceUnit,
@@ -168,8 +172,18 @@ impl Executor {
                             ));
                         }
                         let mut input = String::new();
-                        stdin().read_line(&mut input).unwrap();
-                        let data = DataTypes::String(input);
+                        if stdin().read_line(&mut input).is_err() {
+                            return Err(((*p, *q), RunTimeErrors::ErrorReadingStdin));
+                        }
+                        let data: DataTypes;
+                        match input.trim().parse() {
+                            Ok(num) => {
+                                data = DataTypes::Integer(num);
+                            },
+                            Err(e) => {
+                                data = DataTypes::String(input)
+                            },
+                        }
                         self.symbol_table.insert((self.scope_level, *address), data);
                     } else {
                         return Err(((*p, *q), RunTimeErrors::InvalidAssignment));
@@ -273,25 +287,25 @@ impl Executor {
                 }
             }
 
-            Expression::InputNumber((a, b)) => {
-                let mut input = String::new();
+            // Expression::InputNumber((a, b)) => {
+            //     let mut input = String::new();
 
-                if stdin().read_line(&mut input).is_err() {
-                    return Err(((*a, *b), RunTimeErrors::ErrorReadingStdin));
-                }
+            //     if stdin().read_line(&mut input).is_err() {
+            //         return Err(((*a, *b), RunTimeErrors::ErrorReadingStdin));
+            //     }
 
-                if let Ok(data) = input.trim().parse() {
-                    Ok(DataTypes::Integer(data))
-                } else {
-                    Err(((*a, *b), RunTimeErrors::InvalidNumberInput))
-                }
-            }
+            //     if let Ok(data) = input.trim().parse() {
+            //         Ok(DataTypes::Integer(data))
+            //     } else {
+            //         Err(((*a, *b), RunTimeErrors::InvalidNumberInput))
+            //     }
+            // }
 
-            Expression::InputString((_a, _b)) => {
-                let mut input = String::new();
-                stdin().read_line(&mut input).expect("Unable to read input");
-                Ok(DataTypes::String(input))
-            }
+            // Expression::InputString((_a, _b)) => {
+            //     let mut input = String::new();
+            //     stdin().read_line(&mut input).expect("Unable to read input");
+            //     Ok(DataTypes::String(input))
+            // }
 
             Expression::FunctionCall((p, q), l, args) => {
                 if let Expression::Symbol((_a, _b), TokenType::Symbol(address)) = **l {

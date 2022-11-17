@@ -39,8 +39,6 @@ pub enum Expression {
     Symbol((usize, usize), TokenType),
 
     StringLiteral((usize, usize), TokenType),
-    InputString((usize, usize)),
-    InputNumber((usize, usize)),
 
     FunctionCall((usize, usize), Box<Expression>, Vec<Expression>),
 }
