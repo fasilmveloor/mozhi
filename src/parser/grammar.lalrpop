@@ -34,7 +34,7 @@ Statement:Statement = {
     <a:@L> <name:Expression> "(" <params:Expressions> ")" "{" <s:SourceUnit> "}" <b:@R> => Statement::FunctionDeclaration((a,b),name,params,s),
     <a:@L> Return <expr:Expression> ";" <b:@R>  => Statement::Return((a,b),expr),
     <a:@L> <expr:Expression> ";" <b:@R>  => Statement::EmptyExpression((a,b),expr),
-    <a:@L> Loop <condition:Conditional> "{" <s:SourceUnit> "}" <b:@R> => Statement::Loop((a,b),condition,s),
+    <a:@L> <condition:LoopConditional> Loop "{" <s:SourceUnit> "}" <b:@R> => Statement::Loop((a,b),condition,s),
     <a:@L> <term:Term> Thavana Loop "{" <s:SourceUnit> "}" <b:@R> => Statement::ForLoop((a,b),term,s)
 }; 
 
@@ -49,6 +49,16 @@ Conditional:Expression = {
     <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> "<" <b:@R> => Expression::LessThan((a,b),Box::new(l),Box::new(r)),
     <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> ">=" <b:@R> => Expression::GreaterThanOrEqual((a,b),Box::new(l),Box::new(r)),
     <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> "<=" <b:@R> => Expression::LessThanOrEqual((a,b),Box::new(l),Box::new(r)),
+    Term,
+};
+
+LoopConditional:Expression = {
+    <l:Expression> "ഉം"  <r:Expression> "ഉം" <a:@L> UntilNotEqual <b:@R> => Expression::Equals((a,b),Box::new(l),Box::new(r)),
+    <l:Expression>  "ഉം" <r:Expression> "ഉം" <a:@L> UntilEqualTo <b:@R>  => Expression::NotEquals((a,b),Box::new(l),Box::new(r)),
+    <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> UntilLessThanOrEqual <b:@R> => Expression::GreaterThan((a,b),Box::new(l),Box::new(r)),
+    <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> UntilGreaterThanOrEqual <b:@R> => Expression::LessThan((a,b),Box::new(l),Box::new(r)),
+    <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> UntilLessThan <b:@R> => Expression::GreaterThanOrEqual((a,b),Box::new(l),Box::new(r)),
+    <r:Expression>  "നെകാൾ" <l:Expression> <a:@L> UntilGreaterThan <b:@R> => Expression::LessThanOrEqual((a,b),Box::new(l),Box::new(r)),
     Term,
 };
 
@@ -120,5 +130,11 @@ extern {
         Ennu => TokenType::Ennu,
         Thavana => TokenType::Thavana,
         Print => TokenType::Print,
+        UntilEqualTo => TokenType::UntilEqualTo,
+        UntilNotEqual => TokenType::UntilNotEqual,
+        UntilGreaterThan => TokenType::UntilGreaterThan,
+        UntilLessThan => TokenType::UntilLessThan,
+        UntilGreaterThanOrEqual => TokenType::UntilGreaterThanOrEqual,
+        UntilLessThanOrEqual => TokenType::UntilLessThanOrEqual,
     }
 }

@@ -24,7 +24,7 @@ impl Keywords {
             ["അല്ലേൽ", "അല്ലെങ്കിൽ"] => TokenType::Else,
             ["ആവർത്തിക്കുക"] => TokenType::Loop,
             ["വലുതാണെകിൽ", ] => TokenType::GreaterThan,
-            ["തുല്യമല്ലേൽ"] => TokenType::NotEqual,
+            ["തുല്യമല്ലേൽ", "തുല്യമല്ലെങ്കിൽ"] => TokenType::NotEqual,
             ["ചെറുതാണെങ്കിൽ", ] => TokenType::LessThan,
             ["തുല്യമാണെങ്കിൽ"] => TokenType::EqualTo,
             ["ഉം"] => TokenType::Um,
@@ -33,7 +33,13 @@ impl Keywords {
             ["ചെയ്യുക"] => TokenType::Do,
             ["എന്നു"] => TokenType::Ennu,
             ["തവണ"] => TokenType::Thavana,
-            ["പ്രിന്റ്"] => TokenType::Print
+            ["പ്രിന്റ്"] => TokenType::Print,
+            ["തുല്യമാകുന്നത്_വരെ"] => TokenType::UntilEqualTo,
+            ["തുല്യമല്ലാതാകുന്നത്_വരെ"] => TokenType::UntilNotEqual,
+            ["ചെറുതാകുന്നത്_വരെ"] => TokenType::UntilLessThan,
+            ["വലുതാകുന്നത്_വരെ"] => TokenType::UntilGreaterThan,
+            ["വലുതോതുല്യമോആകുന്നത്_വരെ"] => TokenType::UntilGreaterThanOrEqual,
+            ["ചെറുതോതുല്യമോആകുന്നത്_വരെ"] => TokenType::UntilLessThanOrEqual
             //["പരിഹരിക്കുക"] => TokenType::Break
         );
 

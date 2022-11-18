@@ -38,6 +38,12 @@ pub enum TokenType {
     Symbol(usize),
     Return,
     Print,
+    UntilGreaterThan,
+    UntilLessThan,
+    UntilGreaterThanOrEqual,
+    UntilLessThanOrEqual,
+    UntilEqualTo,
+    UntilNotEqual,
 }
 
 impl std::fmt::Display for TokenType {
@@ -79,6 +85,12 @@ impl std::fmt::Display for TokenType {
             TokenType::Ennu => write!(f, "എന്നു"),
             TokenType::Thavana => write!(f, "തവണ"),
             TokenType::Print => write!(f, "പ്രിന്റ്"),
+            TokenType::UntilGreaterThan => write!(f, "വലുതാകുന്നത്_വരെ"),
+            TokenType::UntilLessThan => write!(f, "ചെറുതാകുന്നത്_വരെ"),
+            TokenType::UntilGreaterThanOrEqual => write!(f, "വലുതോതുല്യമോആകുന്നത്_വരെ"),
+            TokenType::UntilLessThanOrEqual => write!(f, "ചെറുതോതുല്യമോആകുന്നത്_വരെ"),
+            TokenType::UntilEqualTo => write!(f, "തുല്യമാകുന്നത്_വരെ"),
+            TokenType::UntilNotEqual => write!(f, "തുല്യമല്ലാതാകുന്നത്_വരെ"),
         }
     }
 }
