@@ -24,7 +24,6 @@ Comma<T>:Vec<T> = {
     }
 }
 Statement:Statement = {
-    <a:@L> Declaration <id:Expression> ";" <b:@R> => Statement::Declaration((a,b),id),
     <a:@L> <l:Expression> "=" <r:Expression> ";" <b:@R> => Statement::Assignment((a,b),l,r),
     <a:@L> <l:Expression> Input Do ";" <b:@R> => Statement::Input((a,b),l),
     <a:@L> <e:Expression> Ennu Write ";" <b:@R> => Statement::Write((a,b),e),
@@ -87,7 +86,6 @@ extern {
     enum TokenType {
         Identifier => TokenType::Symbol(usize),
         ";" => TokenType::SemiColon,
-        Declaration => TokenType::Declaration,
         "=" => TokenType::Assignment,
         Integer => TokenType::Integer(i64),
         Float => TokenType::Float(f64),

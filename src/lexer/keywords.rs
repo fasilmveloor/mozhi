@@ -18,7 +18,6 @@ macro_rules! keywordize {
 impl Keywords {
     pub fn new() -> Self {
         let list = keywordize!(
-            ["ചരം" ] => TokenType::Declaration,
             ["ഇൻപുട്"] => TokenType::Input,
             ["എഴുതുക", "പ്രദർശിപ്പിക്കുക", "കാണിക്കുക"] => TokenType::Write,
             ["ശെരിയാണോ"] => TokenType::If,

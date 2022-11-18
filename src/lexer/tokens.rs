@@ -1,7 +1,7 @@
 use std::fmt::Formatter;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub enum TokenType {
-    Declaration,
+    // Declaration,
     Write,
     Input,
     LeftBrace,
@@ -43,7 +43,6 @@ pub enum TokenType {
 impl std::fmt::Display for TokenType {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
-            TokenType::Declaration => write!(f, "ചരം"),
             TokenType::Write => write!(f, "എഴുതുക"),
             TokenType::Input => write!(f, "ഇൻപുട്"),
             TokenType::LeftBrace => write!(f, "{{"),

@@ -72,25 +72,6 @@ impl Executor {
             }
             let SourceUnitPart::Statement(stmt) = x;
             match stmt {
-                Statement::Declaration((p, q), symbol) => {
-                    if let Expression::Symbol((_a, _b), TokenType::Symbol(address)) = symbol {
-                        if self
-                            .symbol_table
-                            .get(&(self.scope_level, *address))
-                            .is_some()
-                        {
-                            return Err((
-                                (*p, *q),
-                                RunTimeErrors::SymbolAlreadyDefined(
-                                    self.get_symbol_name(*address).unwrap(),
-                                ),
-                            ));
-                        } else {
-                            self.symbol_table
-                                .insert((self.scope_level, *address), DataTypes::Unknown);
-                        }
-                    }
-                }
 
                 Statement::Conditional((_p, _q), expr, truebody, falsebody) => {
                     let truth = to_bool(self.eval_arithmetic_logic_expression(expr)?);
@@ -127,12 +108,7 @@ impl Executor {
                             .symbol_table
                             .contains_key(&(self.scope_level, *address))
                         {
-                            return Err((
-                                (*p, *q),
-                                RunTimeErrors::UndefinedSymbol(
-                                    self.get_symbol_name(*address).unwrap(),
-                                ),
-                            ));
+                            self.symbol_table.insert((self.scope_level, *address), DataTypes::Unknown);    
                         }
                         let data = self.eval_arithmetic_logic_expression(r)?;
                         self.symbol_table.insert((self.scope_level, *address), data);
@@ -167,12 +143,7 @@ impl Executor {
                             .symbol_table
                             .contains_key(&(self.scope_level, *address))
                         {
-                            return Err((
-                                (*p, *q),
-                                RunTimeErrors::UndefinedSymbol(
-                                    self.get_symbol_name(*address).unwrap(),
-                                ),
-                            ));
+                            self.symbol_table.insert((self.scope_level, *address), DataTypes::Unknown);
                         }
                         let mut input = String::new();
                         if stdin().read_line(&mut input).is_err() {

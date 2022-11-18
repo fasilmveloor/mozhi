@@ -13,7 +13,6 @@ pub enum Statement {
     Conditional((usize, usize), Expression, SourceUnit, Option<SourceUnit>),
     Loop((usize, usize), Expression, SourceUnit),
     ForLoop((usize, usize), Expression, SourceUnit),
-    Declaration((usize, usize), Expression),
     FunctionDeclaration((usize, usize), Expression, Vec<Expression>, SourceUnit),
     Assignment((usize, usize), Expression, Expression),
     EmptyExpression((usize, usize), Expression),
