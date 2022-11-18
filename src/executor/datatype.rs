@@ -111,6 +111,13 @@ pub fn to_bool(data: DataTypes) -> bool {
     }
 }
 
+pub fn to_num(data: DataTypes) -> i64 {
+    match data {
+        DataTypes::Integer(value) => value,
+        _ => panic!("illegal datatype conversion"),
+    }
+}
+
 fn literal_eval(data: &str) -> String {
     data.replace("\\n", "\n")
 }

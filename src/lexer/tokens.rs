@@ -17,6 +17,8 @@ pub enum TokenType {
     Modulo,
     GreaterThan,
     LessThan,
+    GreaterThanOrEqual,
+    LessThanOrEqual,
     EqualTo,
     NotEqual,
     SemiColon,
@@ -25,6 +27,7 @@ pub enum TokenType {
     Um,
     Nekal,
     Do,
+    Thavana,
     Ennu,
     Comma,
     AngleOpen,
@@ -34,6 +37,7 @@ pub enum TokenType {
     Float(f64),
     Symbol(usize),
     Return,
+    Print,
 }
 
 impl std::fmt::Display for TokenType {
@@ -55,6 +59,8 @@ impl std::fmt::Display for TokenType {
             TokenType::Modulo => write!(f, "%"),
             TokenType::GreaterThan => write!(f, "വലുതാണെകിൽ"),
             TokenType::LessThan => write!(f, "ചെറുതാണെങ്കിൽ"),
+            TokenType::GreaterThanOrEqual => write!(f, "വലുതോതുല്യമോആണെങ്കിൽ"),
+            TokenType::LessThanOrEqual => write!(f, "ചെറുതോതുല്യമോആണെങ്കിൽ"),
             TokenType::EqualTo => write!(f, "തുല്യമാണെങ്കിൽ"),
             TokenType::NotEqual => write!(f, "തുല്യമല്ലേൽ"),
             TokenType::SemiColon => write!(f, ";"),
@@ -72,6 +78,8 @@ impl std::fmt::Display for TokenType {
             TokenType::AngleClose => write!(f, ">"),
             TokenType::Do => write!(f, "ചെയ്യുക"),
             TokenType::Ennu => write!(f, "എന്നു"),
+            TokenType::Thavana => write!(f, "തവണ"),
+            TokenType::Print => write!(f, "പ്രിന്റ്"),
         }
     }
 }

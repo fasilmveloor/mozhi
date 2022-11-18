@@ -12,6 +12,7 @@ pub enum SourceUnitPart {
 pub enum Statement {
     Conditional((usize, usize), Expression, SourceUnit, Option<SourceUnit>),
     Loop((usize, usize), Expression, SourceUnit),
+    ForLoop((usize, usize), Expression, SourceUnit),
     Declaration((usize, usize), Expression),
     FunctionDeclaration((usize, usize), Expression, Vec<Expression>, SourceUnit),
     Assignment((usize, usize), Expression, Expression),
@@ -32,8 +33,10 @@ pub enum Expression {
     UnaryMinus((usize, usize), Box<Expression>),
     Equals((usize, usize), Box<Expression>, Box<Expression>),
     GreaterThan((usize, usize), Box<Expression>, Box<Expression>),
+    GreaterThanOrEqual((usize, usize), Box<Expression>, Box<Expression>),
     LessThan((usize, usize), Box<Expression>, Box<Expression>),
     NotEquals((usize, usize), Box<Expression>, Box<Expression>),
+    LessThanOrEqual((usize, usize), Box<Expression>, Box<Expression>),
     Integer((usize, usize), TokenType),
     Float((usize, usize), TokenType),
     Symbol((usize, usize), TokenType),

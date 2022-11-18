@@ -32,7 +32,9 @@ impl Keywords {
             ["നെകാൾ"] => TokenType::Nekal,
             ["തിരികെ_അയക്കുക"] => TokenType::Return,
             ["ചെയ്യുക"] => TokenType::Do,
-            ["എന്നു"] => TokenType::Ennu
+            ["എന്നു"] => TokenType::Ennu,
+            ["തവണ"] => TokenType::Thavana,
+            ["പ്രിന്റ്"] => TokenType::Print
             //["പരിഹരിക്കുക"] => TokenType::Break
         );
 

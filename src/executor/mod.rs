@@ -10,7 +10,7 @@ use error::RunTimeErrors;
 use std::collections::HashMap;
 use std::io::{stdin, stdout, Write};
 
-use crate::executor::datatype::{to_bool, DataTypes};
+use crate::executor::datatype::{to_bool, to_num, DataTypes};
 use crate::lexer::tokens::TokenType;
 
 pub type ScopeLevel = i64;
@@ -60,10 +60,6 @@ impl Executor {
         }
     }
 
-    pub fn is_number(&self, token: &str) -> bool {
-        token.parse::<i64>().is_ok()
-    }
-
     pub fn execute(
         &mut self,
         unit: &SourceUnit,
@@ -110,6 +106,13 @@ impl Executor {
                     while truth {
                         self.execute(body)?;
                         truth = to_bool(self.eval_arithmetic_logic_expression(expr)?);
+                    }
+                }
+
+                Statement::ForLoop((_p, _q), expr, body) => {
+                    let limit = to_num(self.eval_arithmetic_logic_expression(expr)?);
+                    for _i in 0..limit {
+                        self.execute(body)?;
                     }
                 }
 
@@ -180,7 +183,7 @@ impl Executor {
                             Ok(num) => {
                                 data = DataTypes::Integer(num);
                             },
-                            Err(e) => {
+                            Err(_e) => {
                                 data = DataTypes::String(input)
                             },
                         }
@@ -242,6 +245,16 @@ impl Executor {
                     < self.eval_arithmetic_logic_expression(&**r)?,
             )),
 
+            Expression::GreaterThanOrEqual((_a, _b), l, r) => Ok(DataTypes::Bool(
+                self.eval_arithmetic_logic_expression(&**l)?
+                    >= self.eval_arithmetic_logic_expression(&**r)?,
+            )),
+
+            Expression::LessThanOrEqual((_a, _b), l, r) => Ok(DataTypes::Bool(
+                self.eval_arithmetic_logic_expression(&**l)?
+                    <= self.eval_arithmetic_logic_expression(&**r)?,
+            )),
+
             Expression::Integer((a, b), l) => match l {
                 TokenType::Integer(number) => Ok(DataTypes::Integer(*number)),
                 _ => Err(((*a, *b), RunTimeErrors::InvalidExpression)),
@@ -286,26 +299,6 @@ impl Executor {
                     Err(((*a, *b), RunTimeErrors::InvalidExpression))
                 }
             }
-
-            // Expression::InputNumber((a, b)) => {
-            //     let mut input = String::new();
-
-            //     if stdin().read_line(&mut input).is_err() {
-            //         return Err(((*a, *b), RunTimeErrors::ErrorReadingStdin));
-            //     }
-
-            //     if let Ok(data) = input.trim().parse() {
-            //         Ok(DataTypes::Integer(data))
-            //     } else {
-            //         Err(((*a, *b), RunTimeErrors::InvalidNumberInput))
-            //     }
-            // }
-
-            // Expression::InputString((_a, _b)) => {
-            //     let mut input = String::new();
-            //     stdin().read_line(&mut input).expect("Unable to read input");
-            //     Ok(DataTypes::String(input))
-            // }
 
             Expression::FunctionCall((p, q), l, args) => {
                 if let Expression::Symbol((_a, _b), TokenType::Symbol(address)) = **l {
