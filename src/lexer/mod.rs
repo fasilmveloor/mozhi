@@ -84,6 +84,7 @@ impl<'input> Iterator for &mut Lexer<'input> {
                 Some((i, ',')) => return Some(Ok((i, TokenType::Comma, i + 1))),
                 Some((i, '<')) => return Some(Ok((i, TokenType::AngleOpen, i + 1))),
                 Some((i, '>')) => return Some(Ok((i, TokenType::AngleClose, i + 1))),
+                Some((i, '!')) => return Some(Ok((i, TokenType::Not, i + 1))),
                 Some((i, '"')) | Some((i, '\'')) => {
                     let (start, mut end) = (i + 1, 0);
                     let mut ch = ' ';

@@ -1,7 +1,6 @@
 use std::fmt::Formatter;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub enum TokenType {
-    // Declaration,
     Write,
     Input,
     LeftBrace,
@@ -24,6 +23,7 @@ pub enum TokenType {
     SemiColon,
     OpenParantheses,
     CloseParantheses,
+    Not,
     Um,
     Nekal,
     Do,
@@ -46,6 +46,10 @@ pub enum TokenType {
     UntilNotEqual,
     Until,
     Anenkil,
+    Thulyamanenkil,
+    Thulyamallenkil,
+    ValuthoThulyamoAnenkil,
+    CheruthoThulyamoAnenkil,
 }
 
 impl std::fmt::Display for TokenType {
@@ -65,6 +69,11 @@ impl std::fmt::Display for TokenType {
             TokenType::SemiColon => write!(f, ";"),
             TokenType::AngleOpen => write!(f, "<"),
             TokenType::AngleClose => write!(f, ">"),
+            TokenType::EqualTo => write!(f, "=="),
+            TokenType::NotEqual => write!(f, "!="),
+            TokenType::GreaterThanOrEqual => write!(f, ">="),
+            TokenType::LessThanOrEqual => write!(f, "<="),
+            TokenType::Not => write!(f, "!"),
             TokenType::Literal(literal) => write!(f, "{}", literal),
             TokenType::Integer(number) => write!(f, "{}", number),
             TokenType::Float(number) => write!(f, "{}", number),
@@ -77,10 +86,10 @@ impl std::fmt::Display for TokenType {
             TokenType::Loop => write!(f, "ആവർത്തിക്കുക"),
             TokenType::GreaterThan => write!(f, "വലുതാണെകിൽ"),
             TokenType::LessThan => write!(f, "ചെറുതാണെങ്കിൽ"),
-            TokenType::GreaterThanOrEqual => write!(f, "വലുതോതുല്യമോആണെങ്കിൽ"),
-            TokenType::LessThanOrEqual => write!(f, "ചെറുതോതുല്യമോആണെങ്കിൽ"),
-            TokenType::EqualTo => write!(f, "തുല്യമാണെങ്കിൽ"),
-            TokenType::NotEqual => write!(f, "തുല്യമല്ലേൽ"),
+            TokenType::ValuthoThulyamoAnenkil => write!(f, "വലുതോതുല്യമോആണെങ്കിൽ"),
+            TokenType::CheruthoThulyamoAnenkil => write!(f, "ചെറുതോതുല്യമോആണെങ്കിൽ"),
+            TokenType::Thulyamanenkil => write!(f, "തുല്യമാണെങ്കിൽ"),
+            TokenType::Thulyamallenkil => write!(f, "തുല്യമല്ലേൽ"),
             TokenType::Um => write!(f, "ഉം"),
             TokenType::Nekal => write!(f, "നെകാൾ"),
             TokenType::Return => write!(f, "തിരികെ_അയക്കുക"),

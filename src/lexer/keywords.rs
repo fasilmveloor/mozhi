@@ -40,7 +40,8 @@ impl Keywords {
             ["വലുതാകുന്നതുവരെ"] => TokenType::UntilGreaterThan,
             ["വലുതോതുല്യമോആകുന്നതുവരെ"] => TokenType::UntilGreaterThanOrEqual,
             ["ചെറുതോതുല്യമോആകുന്നതുവരെ"] => TokenType::UntilLessThanOrEqual,
-            ["ആണെങ്കിൽ"] => TokenType::Anenkil
+            ["ആണെങ്കിൽ"] => TokenType::Anenkil,
+            ["ആകുന്നതുവരെ"] => TokenType::Until
             //["പരിഹരിക്കുക"] => TokenType::Break
         );
 
