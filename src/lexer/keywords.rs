@@ -34,12 +34,13 @@ impl Keywords {
             ["എന്നു"] => TokenType::Ennu,
             ["തവണ"] => TokenType::Thavana,
             ["പ്രിന്റ്"] => TokenType::Print,
-            ["തുല്യമാകുന്നത്_വരെ"] => TokenType::UntilEqualTo,
-            ["തുല്യമല്ലാതാകുന്നത്_വരെ"] => TokenType::UntilNotEqual,
-            ["ചെറുതാകുന്നത്_വരെ"] => TokenType::UntilLessThan,
-            ["വലുതാകുന്നത്_വരെ"] => TokenType::UntilGreaterThan,
-            ["വലുതോതുല്യമോആകുന്നത്_വരെ"] => TokenType::UntilGreaterThanOrEqual,
-            ["ചെറുതോതുല്യമോആകുന്നത്_വരെ"] => TokenType::UntilLessThanOrEqual
+            ["തുല്യമാകുന്നതുവരെ"] => TokenType::UntilEqualTo,
+            ["തുല്യമല്ലാതാകുന്നതുവരെ"] => TokenType::UntilNotEqual,
+            ["ചെറുതാകുന്നതുവരെ"] => TokenType::UntilLessThan,
+            ["വലുതാകുന്നതുവരെ"] => TokenType::UntilGreaterThan,
+            ["വലുതോതുല്യമോആകുന്നതുവരെ"] => TokenType::UntilGreaterThanOrEqual,
+            ["ചെറുതോതുല്യമോആകുന്നതുവരെ"] => TokenType::UntilLessThanOrEqual,
+            ["ആണെങ്കിൽ"] => TokenType::Anenkil
             //["പരിഹരിക്കുക"] => TokenType::Break
         );
 
