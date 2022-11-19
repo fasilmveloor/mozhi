@@ -32,7 +32,7 @@ impl Keywords {
             ["തിരികെ_അയക്കുക"] => TokenType::Return,
             ["ചെയ്യുക"] => TokenType::Do,
             ["എന്നു"] => TokenType::Ennu,
-            ["തവണ"] => TokenType::Thavana,
+            ["തവണ", "വട്ടം"] => TokenType::Thavana,
             ["പ്രിന്റ്"] => TokenType::Print,
             ["തുല്യമാകുന്നതുവരെ"] => TokenType::UntilEqualTo,
             ["തുല്യമല്ലാതാകുന്നതുവരെ"] => TokenType::UntilNotEqual,
