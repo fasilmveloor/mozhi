@@ -150,13 +150,13 @@ impl Executor {
                             return Err(((*p, *q), RunTimeErrors::ErrorReadingStdin));
                         }
                         let data: DataTypes;
-                        match input.trim().parse() {
-                            Ok(num) => {
-                                data = DataTypes::Integer(num);
-                            },
-                            Err(_e) => {
-                                data = DataTypes::String(input)
-                            },
+                        if let Ok(x) = input.trim().parse::<i64>() {
+                            data = DataTypes::Integer(x);
+                        } else if let Ok(x) = input.trim().parse::<f64>() {
+                            println!("float: {}", x);
+                            data = DataTypes::Float(x);
+                        } else {
+                            data = DataTypes::String(input);
                         }
                         self.symbol_table.insert((self.scope_level, *address), data);
                     } else {
@@ -251,6 +251,7 @@ impl Executor {
                 }
                 match self.symbol_table.get(&(level, *address)) {
                     Some(DataTypes::Integer(number)) => Ok(DataTypes::Integer(*number)),
+                    Some(DataTypes::Float(number)) => Ok(DataTypes::Float(*number)),
                     Some(DataTypes::String(data)) => Ok(DataTypes::String(data.to_string())),
                     _ => Err((
                         (*a, *b),

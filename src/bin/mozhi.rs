@@ -18,7 +18,4 @@ fn main() {
             .expect("ഫയലിലെ ഉള്ളടക്കങ്ങൾ വായിക്കുന്നതിൽ എന്തോ പിഴവ് സംഭവിച്ചു");
         mozhi::run_file(&contents);
     } 
-    // else {
-    //     mozhi::run_interactive_shell();
-    // }
 }
